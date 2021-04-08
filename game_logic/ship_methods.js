@@ -10,7 +10,7 @@ function checkForShip(player, coordinates) {
     }) [0];
 
         if(shipPresent) {
-            return true;
+            return ship;
         }         
     }
     
@@ -20,5 +20,16 @@ function checkForShip(player, coordinates) {
 function damageShip(ship, coordinates) {
     ship.damage.push(coordinates);
 }
+
+function fire(player, coordinates) {
+    let ship = checkForShip(player, coordinates);
+
+    if(ship) {
+        damageShip(ship, coordinates);
+        //add report to inform players of a hit
+    }
+}
+
 module.exports.checkForShip = checkForShip;
 module.exports.damageShip = damageShip;
+module.exports.fire = fire;
